@@ -30,10 +30,6 @@ class Queue {
   get isEmpty() {
     return !this.items.length
   }
-
-  print() {
-    console.log(this.items.toString())
-  }
 }
 
 class LoopQueue extends Queue {
@@ -145,9 +141,5 @@ class PriorityQueue {
 
   get isEmpty() {
     return !this.items.length
-  }
-
-  print() {
-    console.log(this.items)
   }
 }

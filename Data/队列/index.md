@@ -39,10 +39,6 @@ class Queue {
   get isEmpty(){
     return !this.items.length
   }
-
-  print() {
-    console.log(this.items.toString())
-  }
 }
 ```
 
@@ -170,10 +166,6 @@ class PriorityQueue {
 
   get isEmpty() {
     return !this.items.length
-  }
-
-  print() {
-    console.log(this.items)
   }
 }
 ```
