@@ -2,13 +2,13 @@
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(s) {
+var isValid = function(s: string): boolean{
     let temp = {
       "(": ")",
       "[": "]",
       "{": "}"
     }
-    let stack = []
+    let stack: string[] = []
     for (let i of s) {
       if (i in temp) {
         stack.push(i)

@@ -2,7 +2,7 @@
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
+var climbStairs = function(n: number): number{
     if (n === 1) {
       return 1
     }
@@ -19,7 +19,7 @@ console.log(climbStairs(10))
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n) {
+var FclimbStairs = function(n: number): number{
   if (n === 1) {
     return 1
   }
@@ -38,4 +38,4 @@ var climbStairs = function(n) {
 };
 
 
-console.log(climbStairs(10))
+console.log(FclimbStairs(10))
