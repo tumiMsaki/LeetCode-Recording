@@ -3,7 +3,7 @@
  */
 class Queue {
   items: any[]
-  constructor(items) {
+  constructor(items: any[]) {
     this.items = items || []
   }
 
@@ -33,7 +33,7 @@ class Queue {
 }
 
 class LoopQueue extends Queue {
-  constructor(items) {
+  constructor(items: any[]) {
     super(items)
   }
 
@@ -46,13 +46,17 @@ class LoopQueue extends Queue {
     return !this.isEmpty ? this.items[this.getIndex(index)] : null
   }
 }
+
+interface Icurrent {
+  [propsNmae: string] :any
+}
 /**
  * 链表队列
  */
 class QNode {
   element: string | number
   next: object
-  constructor(element) {
+  constructor(element: string | number) {
     this.element = element
     this.next = null
   }
@@ -68,7 +72,7 @@ class LinkedList {
 
   enqueue(element: string | number) {
     const node = new QNode(element)
-    let current = null
+    let current: Icurrent
     while (current.next) {
       current = current.next
     }
@@ -77,7 +81,7 @@ class LinkedList {
   }
 
   dequeue() {
-    let current = null
+    let current: Icurrent
     while (current.next) {
       current = current.next
     }

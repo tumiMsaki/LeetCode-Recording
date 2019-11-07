@@ -1,9 +1,12 @@
+interface Itemp {
+  [propName: string]: string;
+}
 /**
  * @param {string} s
  * @return {boolean}
  */
 var isValid = function(s: string): boolean{
-    let temp = {
+    let temp: Itemp = {
       "(": ")",
       "[": "]",
       "{": "}"
