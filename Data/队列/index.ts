@@ -48,7 +48,7 @@ class LoopQueue extends Queue {
 }
 
 interface Icurrent {
-  [propsNmae: string] :any
+  [propsNmae: string]: any
 }
 /**
  * 链表队列
