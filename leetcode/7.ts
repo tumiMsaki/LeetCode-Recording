@@ -12,13 +12,13 @@ var reverse = function(x: number): number {
   let a = 0
   while (x > 9) {
     a = a * 10 + (x % 10) * 10
-    x = parseInt(x / 10)
+    x = Math.floor(x / 10)
   }
   a += x
   if (a > MAX_NUMBER || a < MIN_NUMBER) {
     return 0
   }
-  return a
+  return isNegative ? -a : a
 }
 
 console.log(reverse(321))
