@@ -6,21 +6,28 @@ var myAtoi = function(str: string): number {
   const MAX_NUMBER = Math.pow(2, 31) - 1
   const MIN_NUMBER = -Math.pow(2, 31)
   const queue: string[] = []
-  let num:string = ''
+  let num: string = ""
   let result: number
   let s = str.trim()
+
+  if (isNaN(Number(str[0])) && str[0] !== "-") {
+    return 0
+  }
   for (let i of s) {
-    if (i === '-') {
+    if (queue.length !== 0 && isNaN(Number(i))) {
+      break
+    }
+    if (i === "-") {
       queue.push(i)
     }
-    if (i === ' ') {
+    if (i === " ") {
       continue
     }
     if (!isNaN(Number(i))) {
       queue.push(i)
     }
   }
-  
+
   if (queue.length === 0) {
     return 0
   }
