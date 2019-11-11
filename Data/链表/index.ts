@@ -48,7 +48,10 @@ class Linkedlist<T> implements IList<T> {
   insert(position: number, element: T): void {
     if (position > this.length || position < 0) return null
     let newNode = new lNode(element)
-    if (this.length === 0) {
+    if (position === 0) {
+      newNode.next = this.head
+      this.head = newNode
+    } else if (this.length === 0) {
       this.head = newNode
       this.length ++
     } else {
@@ -89,7 +92,8 @@ class Linkedlist<T> implements IList<T> {
 
   show(): void {
     let current = this.head
-    while(current.next) {
+    let index = 0
+    while(current) {
       console.log(current.data)
       current = current.next
     }
@@ -101,5 +105,6 @@ let linkedList = new Linkedlist()
 linkedList.append('a')
 linkedList.append('b')
 linkedList.insert(1,'g')
+linkedList.insert(0,'aa')
 
 linkedList.show()
