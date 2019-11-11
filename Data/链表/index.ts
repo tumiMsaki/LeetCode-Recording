@@ -2,8 +2,8 @@ interface IList<T> {
   append(element: T): void
   insert(position: number, element: T): void
   get(element: T): void
-  indexOf(position: T): number
-  updata(position: number): void
+  indexOf(position: number): T
+  updata(position: number, element: T): void
   remove(element: T): void
   removeAt(position: number): void
   size(): number
@@ -33,7 +33,7 @@ class Linkedlist<T> implements IList<T> {
     if (this.length == 0) {
       let newNode = new lNode(element)
       this.head = newNode
-      this.length ++
+      this.length++
     } else {
       let newNode = new lNode(element)
       let current = this.head
@@ -41,7 +41,7 @@ class Linkedlist<T> implements IList<T> {
         current = current.next
       }
       current.next = newNode
-      this.length ++
+      this.length++
     }
   }
 
@@ -51,9 +51,10 @@ class Linkedlist<T> implements IList<T> {
     if (position === 0) {
       newNode.next = this.head
       this.head = newNode
+      this.length++
     } else if (this.length === 0) {
       this.head = newNode
-      this.length ++
+      this.length++
     } else {
       let current = this.head
       let previous = null
@@ -64,36 +65,101 @@ class Linkedlist<T> implements IList<T> {
       }
       newNode.next = current
       previous.next = newNode
-      this.length ++
+      this.length++
     }
   }
 
-  get(element: T): void {}
-
-  indexOf(position: T): number {
-    return
+  get(element: T): number {
+    let current = this.head
+    let index = 0
+    while (index++ < this.length) {
+      if (current.data === element) {
+        return index
+      }
+      current = current.next
+    }
+    return null
   }
 
-  updata(position: number): void {}
+  indexOf(position: number): T {
+    if (position > this.length || position < 0) return null
+    let current = this.head
+    while (position > 0) {
+      current = current.next
+      position--
+    }
+    return current.data
+  }
 
-  remove(element: T): void {}
+  updata(position: number, element: T): void {
+    if (position > this.length || position < 0) return null
+    let newNode = new lNode(element)
+    let current = this.head
+    let previous = null
+    if (position === 0) {
+      newNode.next = this.head.next
+      this.head = newNode
+    } else {
+      while (position > 0) {
+        previous = current
+        current = current.next
+        position--
+      }
+      previous.next = newNode
+      newNode.next = current.next
+    }
+  }
 
-  removeAt(position: number): void {}
+  remove(element: T): void {
+    if (this.head.data === element) {
+      this.head = this.head.next
+    } else {
+      let current = this.head
+      let previous = null
+      while (current) {
+        if (current.data === element) {
+          break
+        }
+        previous = current
+        current = current.next
+      }
+      previous.next = current
+    }
+    this.length --
+  }
+
+  removeAt(position: number): void {
+    let index = this.indexOf(position)
+    this.remove(index)
+  }
 
   size(): number {
-    return
+    let index = 0
+    let current = this.head
+    while(current) {
+      index ++
+      current = current.next
+    }
+    return index
   }
 
   isEmpty(): boolean {
-    return
+    if (this.length === 0) {
+      return true
+    } else {
+      return false
+    }
   }
 
-  clear(): void {}
+  clear(): void {
+    this.head = new lNode<T>(null)
+    this.length = 0
+  }
 
   show(): void {
     let current = this.head
     let index = 0
-    while(current) {
+    while (current) {
       console.log(current.data)
       current = current.next
     }
@@ -102,9 +168,9 @@ class Linkedlist<T> implements IList<T> {
 
 let linkedList = new Linkedlist()
 
-linkedList.append('a')
-linkedList.append('b')
-linkedList.insert(1,'g')
-linkedList.insert(0,'aa')
-
+linkedList.append("a")
+linkedList.append("b")
+linkedList.insert(1, "g")
+linkedList.insert(0, "aa")
+linkedList.updata(0, "ssss")
 linkedList.show()
