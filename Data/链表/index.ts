@@ -1,8 +1,8 @@
 interface IList<T> {
   append(element: T): void
   insert(position: number, element: T): void
-  get(element: T): void
-  indexOf(position: number): T
+  get(position: number): T
+  indexOf(element: T): number
   updata(position: number, element: T): void
   remove(element: T): void
   removeAt(position: number): void
@@ -69,45 +69,37 @@ class Linkedlist<T> implements IList<T> {
     }
   }
 
-  get(element: T): number {
-    let current = this.head
-    let index = 0
-    while (index++ < this.length) {
-      if (current.data === element) {
-        return index
-      }
-      current = current.next
-    }
-    return null
-  }
-
-  indexOf(position: number): T {
-    if (position > this.length || position < 0) return null
+  get(position: number): T {
+    if (position < 0 || position >= this.length) return null
     let current = this.head
     while (position > 0) {
       current = current.next
-      position--
+      position --
     }
     return current.data
   }
 
-  updata(position: number, element: T): void {
-    if (position > this.length || position < 0) return null
-    let newNode = new lNode(element)
+  indexOf(element: T): number {
+    let index = 0
     let current = this.head
-    let previous = null
-    if (position === 0) {
-      newNode.next = this.head.next
-      this.head = newNode
-    } else {
-      while (position > 0) {
-        previous = current
-        current = current.next
-        position--
+    while (current) {
+      if (current.data === element) {
+        return index
       }
-      previous.next = newNode
-      newNode.next = current.next
+      current = current.next
+      index ++
     }
+    return -1
+  }
+
+  updata(position: number, element: T): void {
+    if (position > this.length || position <= 0) return null
+    let current = this.head 
+    while (position > 0) {
+      current = current.next
+      position --
+    }
+    current.data = element
   }
 
   remove(element: T): void {
@@ -129,8 +121,7 @@ class Linkedlist<T> implements IList<T> {
   }
 
   removeAt(position: number): void {
-    let index = this.indexOf(position)
-    this.remove(index)
+    
   }
 
   size(): number {
