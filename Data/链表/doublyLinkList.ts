@@ -162,4 +162,4 @@ doublyList.append("a")
 doublyList.append("b")
 doublyList.insert(2, "c")
 doublyList.removeAt(2)
-doublyList.show()
+
