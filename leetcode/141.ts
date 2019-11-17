@@ -9,7 +9,7 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
+var hasCycle = function(head: any) {
   let first = head
   let second = head
   while (first && first.next) {
