@@ -1,6 +1,10 @@
-function ListNode(val) {
-  this.val = val
-  this.next = null
+class ListNode {
+  val: number
+  next: ListNode
+  constructor(val: number) {
+    this.val = val 
+    this.next = null
+  }
 }
 /**
  * Definition for singly-linked list.
@@ -14,7 +18,7 @@ function ListNode(val) {
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1: any, l2: any): any {
+var addTwoNumbers = function(l1: ListNode, l2: ListNode): ListNode {
   let p1 = l1
   let p2 = l2
   let carry = 0
