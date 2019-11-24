@@ -5,7 +5,7 @@ class Stack {
   }
 
   push(element: any) {
-    this.items.push(element)
+    this.items.unshift(element)
   }
 
   pop() {
