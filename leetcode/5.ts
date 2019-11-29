@@ -41,3 +41,4 @@ var longestPalindrome = function(s: string): string {
   }
   return result
 }
+
