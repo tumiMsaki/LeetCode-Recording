@@ -1,12 +1,3 @@
-class ListNode {
-  val: number
-  next: ListNode
-  constructor(val: number) {
-    this.val = null
-    this.next = null
-  }
-}
-
 /**
  * Definition for singly-linked list.
  * function ListNode(val) {
@@ -19,6 +10,7 @@ class ListNode {
  * @return {ListNode}
  */
 var mergeKLists = function(lists: ListNode[]): ListNode {
+  if (!lists[0]) return null
   let len = lists.length
   let newList = new ListNode(0)
   let current = newList
