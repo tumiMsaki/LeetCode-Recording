@@ -8,7 +8,7 @@ var reverseString = function(s: string[]): void {
   while (p1 < p2) {
     [s[p1], s[p2]] = [s[p2], s[p1]]
     p1++
-    p2-- 
+    p2--
   }
   console.log(s)
 };
