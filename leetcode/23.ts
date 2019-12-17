@@ -9,7 +9,7 @@
  * @param {ListNode[]} lists
  * @return {ListNode}
  */
-var mergeKLists = function(lists: ListNode[]): ListNode {
+var mergeKLists = function (lists: ListNode[]): ListNode {
   if (!lists[0]) return null
   let len = lists.length
   let newList = new ListNode(0)
