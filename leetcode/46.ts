@@ -2,13 +2,23 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var permute = function (nums: number[]): number[][] {
-  let ws = []
-  let len = nums.length
-  for (let i = 0; i < len; i++) {
-    for (let j = 0, wsLen = ws.length; j < wsLen; j++) {
-      ws.push()
-    }
+var permute = function(nums: number[]):number[][] {
+  let n = nums.length;
+  let res: number[][] = [];
+  let tmpPath: number[] = [];
+  let backtrack = (tmpPath: number[]) => {
+      if(tmpPath.length == n){
+          res.push(tmpPath);
+          return;
+      }
+      for(let i = 0;i < n;i++){
+          if(!tmpPath.includes(nums[i])){
+              tmpPath.push(nums[i]);
+              backtrack(tmpPath.slice());
+              tmpPath.pop();
+          }
+      }
   }
-  return
-};
+  backtrack(tmpPath);
+  return res;
+}
